@@ -1,13 +1,27 @@
 language: python
+
 python:
   - "3.5"
-# command to install dependencies
+
+# Command to install dependencies
 install:
-  - pip install .
   - pip install -r requirements.txt
-# command to run tests
-script: ./travis
+
+# Allows the script to run
+
+before_script:
+  - chmod +x ./travis
+
+# Command to run tests
+script: 
+  - ./travis
+
+# Routes you to container infrastructure for faster building
+sudo:
+  - false
+
 addons:
   code_climate:
     repo_token: 
+      # PEP8 would yell at me for this
       secure: "q7oQ6WuWxd+A9UQse3/SzeU01J7IXDB27Z/Ol49m+yXMarGluZDHLTVvdDmrn3pValHC5Pg0u1YYaRvs0wbFT38jnBHcKDCw2/LV+V5DJFVMyGtWQo8M9DIx2/JvgcJMvH7Q8qtTVay0kVMrXo4IGdxvbjYKm0OpFY1HvJH7KrIpoTK8XR2BPzEV97X/BdG92KUjKe0hAMTTkN2eryE6ug7lnHVyEyXV0limryK8P7ts7dgUfzed4hl4svUR1IqQUpmUhWVeXYRVLUFz/4tQSRhEAc756eC5L8HQkI2HMYIIqsNGI32zpQ6onxxYugBMXNTZPrZAmoBq1CmNSDZ+d2Ddcz7DZSJRLdWBuU6PvmzL7tOr9tImKFblLv3WVbWb9zI1Gi+5nHlZU7TlpcUwwvBM9fDyHx8JzH2TpBh/VfmAeXDi3vr4wxs08I7A5ZdkiR1M++uDq8MHW9XuGf3fGX3L2ssGdXDQfJ+FU03qEEuoogSu7sXRNWsxMGQdt4wDvVZ2dijcjcXHJxwCL57dxm7ptE2qPeXUqzeR5qR0pXdFD+SR5J67QsHLT16coXZOykKDOYPTX0RiM/TzIcuDOjddMAleFOwycYGGIlEkZTm4Z2zlGsXYrN+Ea3knr2O0dDSuQ96gaffWGcCPg/vLsXm3w/GcLTs+NFQJTWPey7o="
