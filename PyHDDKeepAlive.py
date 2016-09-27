@@ -102,5 +102,7 @@ else:
             if os.path.isfile(file):
                 print("Deleting " + file)
                 os.remove(file)
+                sys.exit()
             else:
                 print("Done!")
+                sys.exit()
