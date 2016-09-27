@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Terminate script if there is an error
+
+set -e
+
+# Compiles all python to check syntax
+python -m compileall
