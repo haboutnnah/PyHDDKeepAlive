@@ -97,14 +97,14 @@ if os.path.isfile(FILE):
 else:
     print("Running at ", PATH, "every", SLEEP, "seconds!")
     # Sets what to write
-    toWrite = ("%s %s by %s <%s>"
-               % (__script__, __version__, __author__, __contact__))
+    INFO = ("%s %s by %s <%s>"
+            % (__script__, __version__, __author__, __contact__))
 
     while True:
         try:
-            # The writer creates the empty file that we can then write to.
+            # The w means that we can write to the file.
             WRITER = open(FILE, "w")
-            WRITER.write(toWrite)
+            WRITER.write(INFO)
             WRITER.close()
             os.remove(FILE)
             time.sleep(SLEEP)
