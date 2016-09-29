@@ -46,6 +46,7 @@ def complain():
     print("No  valid arguments were given, assuming to run at ", rootDir)
     print("If you would like help, run with the argument \"--help\"")
 
+
 # Get command line arguments
 for arg in sys.argv[1:]:
     # Get the first 7 characters of argument and check if they're "--path"
@@ -83,7 +84,6 @@ for arg in sys.argv[1:]:
     else:
         complain()
 
-
 if not path.endswith(dirSeparator):
     path += dirSeparator
 
@@ -98,9 +98,9 @@ if os.path.isfile(file):
 else:
     print("Running at ", path, "every", sleep, "seconds!")
     # Sets what to write
-    toWrite = __name__ + __version__\
-              + "by " + __author__ +\
-              "<" + __contact__ + ">"
+    toWrite = (__name__ + __version__
+               + "by " + __author__ +
+               "<" + __contact__ + ">")
 
     while True:
         try:
