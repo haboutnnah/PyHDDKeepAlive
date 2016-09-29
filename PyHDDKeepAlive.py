@@ -43,8 +43,9 @@ path = rootDir
 
 
 def complain():
-    print("No  valid arguments were given, assuming to run at ", rootDir)
+    print("No  valid arguments were given, assuming to run at %s" % rootDir)
     print("If you would like help, run with the argument \"--help\"")
+    sys.exit()
 
 
 # Get command line arguments
@@ -69,9 +70,9 @@ for arg in sys.argv[1:]:
             break
     elif arg == "help" or "\-help" or "\-\-help":
         print("The command line arguments you can use are:")
-        print("--path=<Insert path to write to here> Default is", rootDir)
+        print("--path=<Insert path to write to here> Default is %s" % rootDir)
         print("--sleep=<Seconds To Sleep>  Default is 55")
-        print("For example, you might do --path=", example, "--sleep=30")
+        print("For example, you might do --path=%s --sleep=30" % example)
         sys.exit()
     elif arg == "contact" or "copyright" or "author":
         print(__author__)
@@ -98,13 +99,13 @@ if os.path.isfile(file):
 else:
     print("Running at ", path, "every", sleep, "seconds!")
     # Sets what to write
-    toWrite = (__name__ + __version__
-               + "by " + __author__ +
-               "<" + __contact__ + ">")
+    toWrite = ("%s %s by %s <%s>"
+               % (__name__, __version__, __author__, __contact__))
 
     while True:
         try:
-            writer = open(file, "a")
+            # The w creates the empty file that we can then write to.
+            writer = open(file, "w")
             writer.write(toWrite)
             writer.close()
             os.remove(file)
@@ -112,10 +113,11 @@ else:
         except PermissionError:
             print("Oops, we don't have access to that directory.")
             print("Try another directory on the same drive.")
+            sys.exit()
         except KeyboardInterrupt:
             print("Stopping...")
             if os.path.isfile(file):
-                print("Deleting " + file)
+                print("Deleting %s" % file)
                 os.remove(file)
                 sys.exit()
             else:
