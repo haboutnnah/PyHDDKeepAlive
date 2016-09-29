@@ -26,5 +26,5 @@ If you wish for the program to run headlessly on startup, on Windows here are so
 
 2. Enter in Shell:Startup and press enter
 
-3.  Create a shortcut for `C:\Python27\pythonw.exe $SCRIPTLOCATION.py $ARGS`.  
+3.  Create a shortcut for `C:\Python35\pythonw.exe $SCRIPTLOCATION.py $ARGS`.  
 Make sure to replace $ARGS and $SCRIPTLOCATION with their values.
