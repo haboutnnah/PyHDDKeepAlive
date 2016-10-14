@@ -8,10 +8,8 @@ contact@manmeetgill.com
 https://github.com/tf2manu994/PyHDDKeepAlive
 """
 # Used for getting command line arguments
-import sys
-# Used to delete file after creation
 import os
-# Used to make sure the program doesn't loop endlessly and max your CPU
+import sys
 import time
 
 __author__ = "Manmeet Gill"
@@ -44,52 +42,58 @@ PATH = ROOT_DIR
 
 # Get command line arguments
 for argument in sys.argv[1:]:
-    # Get the first 7 characters of argument and check if they're "--path"
-    if argument[:7] == "--sleep":
+    # Remove flag markers, we don't need to process those.
+    argument = argument.replace("-", "")
+    argument = argument.replace("/", "")
+    # Get the first 5 characters of argument and check if they're "path"
+    if argument[:4] == "sleep":
         try:
-            # Ignore the 8th one because it's an equals, we don"t need that
-            SLEEP = int(argument[8:])
+            # Ignore the 6th one because it's an equals, we don"t need that
+            SLEEP = int(argument[5:])
+            # Tell the loop that there were valid arguments, stop the edge case
             VALID_ARGS = True
         except ValueError:
             print('That\'s not a valid amount of time.')
-            print('Make sure you wrote --sleep=NUMBER and not --sleep NUMBER?')
+            print('Make sure you wrote sleep=NUMBER and not sleep NUMBER')
             sys.exit()
-
-    elif argument[:6] == "--path":
-        PATH = argument[7:]
+    # Get the first 4 characters
+    elif argument[:3] == "path":
+        # Ignore the 4th one, its an equals and we don't care
+        PATH = argument[4:]
+        # Tell the loop that there were valid arguments, stop the edge case
         VALID_ARGS = True
-        if SLEEP == 55:
-            continue
-        else:
-            break
-    elif argument == "help" or "-help" or "--help":
+    elif argument == "help":
         print(__script__)
         print("The command line arguments you can use are:")
-        print("--path=<Insert path to write to here> Default is %s" % ROOT_DIR)
-        print("--sleep=<Seconds To Sleep>  Default is 55")
-        print("For example, you might do --path=%s --sleep=30" % EXAMPLE)
+        print("path=<Insert path to write to here>. Default is %s" % ROOT_DIR)
+        print("sleep=<Seconds To Sleep>  Default is 55")
+        print("For example, you might do path=%s sleep=30" % EXAMPLE)
+        print(argument)
         sys.exit()
-    elif argument == "contact" or "copyright" or "author":
+    elif argument == "contact" or "copyright" or "author" or "version":
         print(__author__)
         print(__contact__)
         print(__website__)
         print(__script__, __version__)
         print(__git__)
-        print("For help, run with the argument \"--help\"")
+        print("For help, run with the argument \"help\"")
         sys.exit()
     else:
         print("No  valid arguments were given.")
-        print("If you would like help, run with the argument \"--help\"")
+        print("If you would like help, run with the argument \"help\"")
         sys.exit()
 
-
+# If the path doesn't end with a directory separator, add one.
 if not PATH.endswith(DIR_SEPARATOR):
     PATH += DIR_SEPARATOR
 
+# Windows doesn't let us deal with the root of C, so we fiddle with temp
 if PATH == "C:\\":
     PATH = "C:\\temp\\"
 
+# Set the place to write the file.
 FILE = PATH + FILE_NAME
+
 if os.path.isfile(FILE):
     print("The file already exists.")
     print("To make sure I don\"t delete something important, I have stopped.")
