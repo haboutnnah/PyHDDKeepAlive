@@ -23,3 +23,9 @@
 # Travis
 travis text eol lf
 .travis.yml text eol lf
+# CodeClimate
+.codeclimate.yml text eol=lf
+
+### Binaries
+## Graphics
+.png binary
