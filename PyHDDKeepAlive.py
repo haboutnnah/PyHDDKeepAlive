@@ -11,6 +11,7 @@ https://github.com/tf2manu994/PyHDDKeepAlive
 import os
 import sys
 import time
+import atexit
 
 __author__ = "Manmeet Gill"
 __contact__ = "contact@manmeetgill.com"
@@ -94,6 +95,18 @@ if PATH == "C:\\":
 # Set the place to write the file.
 FILE = PATH + FILE_NAME
 
+
+@atexit.register
+def cleanup():
+    print("Stopping...")
+    if os.path.isfile(FILE):
+        print("Deleting %s" % FILE)
+        os.remove(FILE)
+        sys.exit()
+    else:
+        print("Done!")
+        sys.exit()
+
 if os.path.isfile(FILE):
     print("The file already exists.")
     print("To make sure I don\"t delete something important, I have stopped.")
@@ -117,11 +130,4 @@ else:
             print("Try another directory on the same drive.")
             sys.exit()
         except KeyboardInterrupt:
-            print("Stopping...")
-            if os.path.isfile(FILE):
-                print("Deleting %s" % FILE)
-                os.remove(FILE)
-                sys.exit()
-            else:
-                print("Done!")
-                sys.exit()
+            cleanup()
