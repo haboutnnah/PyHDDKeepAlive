@@ -46,10 +46,10 @@ for argument in sys.argv[1:]:
     argument = argument.replace("-", "")
     argument = argument.replace("/", "")
     # Get the first 5 characters of argument and check if they're "path"
-    if argument[:4] == "sleep":
+    if argument[:5] == "sleep":
         try:
             # Ignore the 6th one because it's an equals, we don"t need that
-            SLEEP = int(argument[5:])
+            SLEEP = int(argument[6:])
             # Tell the loop that there were valid arguments, stop the edge case
             VALID_ARGS = True
         except ValueError:
@@ -57,9 +57,9 @@ for argument in sys.argv[1:]:
             print('Make sure you wrote sleep=NUMBER and not sleep NUMBER')
             sys.exit()
     # Get the first 4 characters
-    elif argument[:3] == "path":
+    elif argument[:4] == "path":
         # Ignore the 4th one, its an equals and we don't care
-        PATH = argument[4:]
+        PATH = argument[5:]
         # Tell the loop that there were valid arguments, stop the edge case
         VALID_ARGS = True
     elif argument == "help":
