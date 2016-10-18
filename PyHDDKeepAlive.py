@@ -8,10 +8,10 @@ contact@manmeetgill.com
 https://github.com/tf2manu994/PyHDDKeepAlive
 """
 # Used for getting command line arguments
+import atexit
 import os
 import sys
 import time
-import atexit
 
 __author__ = "Manmeet Gill"
 __contact__ = "contact@manmeetgill.com"
@@ -98,6 +98,9 @@ FILE = PATH + FILE_NAME
 
 @atexit.register
 def cleanup():
+    """
+    :rtype: void
+    """
     print("Stopping...")
     if os.path.isfile(FILE):
         print("Deleting %s" % FILE)
