@@ -1,4 +1,4 @@
-# PyHDDKeepAlive  by [Manmeet Gill](https://manmeetgill.com) 2016  
+# PyHDDKeepAlive  by [Manmeet Gill](https://manmeetgill.com)  
 [![Build Status](https://travis-ci.org/tf2manu994/PyHDDKeepAlive.svg?branch=master)](https://travis-ci.org/tf2manu994/PyHDDKeepAlive)
 [![Code Climate](https://codeclimate.com/github/tf2manu994/PyHDDKeepAlive/badges/gpa.svg)](https://codeclimate.com/github/tf2manu994/PyHDDKeepAlive)  
 A Python port of [HDD-Keep-Alive](https://github.com/tf2manu994/HDD-Keep-Alive)  
