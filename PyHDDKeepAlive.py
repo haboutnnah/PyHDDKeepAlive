@@ -99,7 +99,7 @@ FILE = PATH + FILE_NAME
 @atexit.register
 def cleanup():
     """
-    :rtype: void
+    :rtype: int
     """
     print("Stopping...")
     if os.path.isfile(FILE):
