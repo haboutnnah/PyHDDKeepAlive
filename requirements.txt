@@ -1,1 +1,1 @@
-﻿# requirements.txt
+# requirements.txt
